@@ -53,12 +53,6 @@ class MapProgram(Program):
                 m += """Given a set of values from a database, answer the question row-by-row, in order."""
                 if include_tf_disclaimer:
                     m += " If the question can be answered with 'true' or 'false', select `t` for 'true' or `f` for 'false'."
-                if allow_null_option:
-                    m += newline_dedent(
-                        f"""
-                    If a given value has no appropriate answer, give '-' as a response.
-                    """
-                    )
                 m += newline_dedent(
                     """
                 ---
@@ -122,10 +116,6 @@ class MapProgram(Program):
                     When you have given all {len(values)} answers, stop responding.
                     """
             )
-            if allow_null_option:
-                prompt += newline_dedent(
-                    """If a given value has no appropriate answer, give '-' as a response."""
-                )
             prompt += newline_dedent(
                 """
             ---
